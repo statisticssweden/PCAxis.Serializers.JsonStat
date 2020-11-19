@@ -13,7 +13,7 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="PCAxis.Core" Version="1.0.0" />
-    <PackageReference Include="PCAxis.PX.Core" Version="1.0.0-beta2" />
+    <PackageReference Include="PCAxis.PX.Core" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
