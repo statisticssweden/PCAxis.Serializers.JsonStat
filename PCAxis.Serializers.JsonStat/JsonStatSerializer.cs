@@ -10,8 +10,9 @@ namespace PCAxis.Serializers.JsonStat
     using PCAxis.Metadata;
     using System.Collections;
 	using Newtonsoft.Json;
+    using System.Linq;
 
-	public class JsonStatSerializer : PCAxis.Paxiom.IPXModelStreamSerializer
+    public class JsonStatSerializer : PCAxis.Paxiom.IPXModelStreamSerializer
     {
         private static log4net.ILog _logger = log4net.LogManager.GetLogger(typeof(JsonStatSerializer));
 
