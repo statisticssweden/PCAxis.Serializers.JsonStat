@@ -105,8 +105,6 @@ namespace PCAxis.Serializers.JsonStat
         {
             meta = model.Meta;
 
-            _logger.Info("Trying to parse .CreationDate from Paxiom => " + meta.CreationDate);
-
             BuildDataSymbolMap();
 
             var jsonResult = new JsonStat.Model.JsonStat();
@@ -114,7 +112,17 @@ namespace PCAxis.Serializers.JsonStat
             var formatter = new DataFormatter(model);
 
             dataset.source = meta.Source;
-            dataset.updated = meta.CreationDate.PxDateStringToDateTime().ToString();
+
+            if (model.Meta.ContentVariable != null && model.Meta.ContentVariable.Values.Count > 0)
+            {
+                var lastUpdatedContentsVariable = model.Meta.ContentVariable.Values.OrderByDescending(x => x.ContentInfo.LastUpdated).FirstOrDefault();
+                dataset.updated = lastUpdatedContentsVariable.ContentInfo.LastUpdated.PxDateStringToDateTime().ToString();
+            }
+            else
+            {
+                dataset.updated = model.Meta.CreationDate.PxDateStringToDateTime().ToString();
+            }
+
             dataset.dimension = new Dictionary<string, object>();
 
 			//Extension, PX 
