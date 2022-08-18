@@ -48,9 +48,14 @@
         /// </summary>
         public string updated
         {
-            get { return _updated.ToString("yyyy-MM-ddTHH:mm:ssZ"); }
-            set { _updated = DateTime.ParseExact(value, Paxiom.PXConstant.PXDATEFORMAT, CultureInfo.InvariantCulture).ToUniversalTime(); }
+            get { return _updated.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture); }
+            set { _updated = DateTime.Parse(value).ToUniversalTime(); }
+
+            /*
+                set { _updated = DateTime.ParseExact(value, Paxiom.PXConstant.PXDATEFORMAT, CultureInfo.InvariantCulture).ToUniversalTime(); }
+            */
         }
+    
         /// <summary>
         /// It contains the data sorted according to the dataset dimensions. It usually takes the form of an array where missing values are expressed as nulls.
         /// http://json-stat.org/format/#value

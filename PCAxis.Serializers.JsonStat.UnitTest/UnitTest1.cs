@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using PCAxis.Paxiom;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -14,6 +15,11 @@ namespace PCAxis.Serializers.JsonStat.UnitTest
 		[TestMethod]
 		public void TestMethod1()
 		{
+
+			CultureInfo ci = new CultureInfo("fi-FI");
+			System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+			System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+
 			PCAxis.Paxiom.IPXModelBuilder builder = new PXFileBuilder();
 			
 			builder.SetPath("PR0101B3.px");
